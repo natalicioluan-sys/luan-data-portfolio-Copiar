@@ -64,7 +64,7 @@ export const profile = {
   contact: {
     github: 'https://github.com/natalicioluan-sys' as string | null,
     linkedin: 'https://www.linkedin.com/in/luan-natalicio' as string | null,
-    email: null as string | null, // ex.: 'voce@exemplo.com'
+    email: 'natalicioluan@gmail.com' as string | null,
   },
   /** URL final do site, usada em SEO. Ex.: 'https://seudominio.com' */
   siteUrl: 'https://luan-data-portfolio-copiar.vercel.app' as string | null,

@@ -63,9 +63,9 @@ export const profile = {
   location: 'Ciudad del Este, Paraguai',
   contact: {
     github: 'https://github.com/natalicioluan-sys' as string | null,
-    linkedin: null as string | null, // ex.: 'https://www.linkedin.com/in/seu-perfil'
+    linkedin: 'https://www.linkedin.com/in/luan-natalicio' as string | null,
     email: null as string | null, // ex.: 'voce@exemplo.com'
   },
   /** URL final do site, usada em SEO. Ex.: 'https://seudominio.com' */
-  siteUrl: null as string | null,
+  siteUrl: 'https://luan-data-portfolio-copiar.vercel.app' as string | null,
 }

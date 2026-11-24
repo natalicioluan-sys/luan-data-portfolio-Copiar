@@ -1,10 +1,10 @@
 import type { ProjectData } from './types'
 
-const images = '/images/projects/cambiocde'
+const images = '/images/projects/cruzacambio'
 
-export const cambiocde: ProjectData = {
-  slug: 'cambiocde',
-  name: 'CambioCDE',
+export const cruzacambio: ProjectData = {
+  slug: 'cruzacambio',
+  name: 'CruzaCâmbio',
   subtitle: 'Inteligência Cambial',
   category: 'Inteligência financeira',
   context: 'Projeto independente',
@@ -24,7 +24,7 @@ export const cambiocde: ProjectData = {
   images: [
     {
       src: `${images}/comparador.webp`,
-      alt: 'Tela do comparador do CambioCDE com filtros de moeda e operação, indicadores e tabela de cotações das filiais da Ita Cambios.',
+      alt: 'Tela do comparador do CruzaCâmbio com filtros de moeda e operação, indicadores e tabela de cotações das filiais da Ita Cambios.',
       caption:
         'Comparador em execução local, com cotações reais da Ita Cambios coletadas em 23/11/2026. Valores referenciais.',
       width: 1400,
@@ -32,7 +32,7 @@ export const cambiocde: ProjectData = {
     },
     {
       src: `${images}/mobile.webp`,
-      alt: 'Comparador do CambioCDE em tela de celular, com seletores de moeda, operação, valor e indicadores.',
+      alt: 'Comparador do CruzaCâmbio em tela de celular, com seletores de moeda, operação, valor e indicadores.',
       caption: 'Mesma tela em largura de celular.',
       width: 520,
       height: 1052,

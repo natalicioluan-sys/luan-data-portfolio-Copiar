@@ -10,7 +10,7 @@ O site separa projetos concluídos, em desenvolvimento e planejados, e usa apena
 
 | Projeto | Categoria | Status |
 |---|---|---|
-| CambioCDE — Inteligência Cambial | Inteligência financeira | Em desenvolvimento |
+| CruzaCâmbio — Inteligência Cambial | Inteligência financeira | Em desenvolvimento |
 | Quant Intelligence — Plataforma de Inteligência de Mercado | Inteligência financeira | Em desenvolvimento |
 | Daily Tasks — Aplicação de Gestão de Tarefas | Desenvolvimento web | Concluído (acadêmico) |
 | Sales Intelligence — Análise Comercial | Inteligência comercial | Planejado |

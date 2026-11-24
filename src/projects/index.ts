@@ -1,4 +1,4 @@
-import { cambiocde } from './cambiocde'
+import { cruzacambio } from './cruzacambio'
 import { customerAnalytics } from './customer-analytics'
 import { dailyTasks } from './daily-tasks'
 import { quantIntelligence } from './quant-intelligence'
@@ -11,7 +11,7 @@ import type { Project, ProjectCategory, ProjectData, ProjectStatus } from './typ
  * Projetos com `published: false` ficam guardados, mas não aparecem nem geram página.
  */
 const allProjects: ProjectData[] = [
-  cambiocde,
+  cruzacambio,
   quantIntelligence,
   dailyTasks,
   salesIntelligence,

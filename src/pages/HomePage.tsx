@@ -1,4 +1,4 @@
-import { ArrowRight, FolderGit2, GraduationCap, Mail, MapPin, UserRound } from 'lucide-react'
+import { ArrowRight, Award, Briefcase, FolderGit2, GraduationCap, Mail, MapPin, Route, Target, UserRound } from 'lucide-react'
 import { Link } from 'react-router'
 import { HeroPipeline } from '../components/home/HeroPipeline'
 import { ButtonLink } from '../components/ui/ButtonLink'
@@ -19,14 +19,21 @@ const sectionClass = 'mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24'
 function Hero() {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-12 sm:px-8 sm:pt-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:pb-24">
-      <div className="rise">
+      <div className="rise min-w-0">
         <p className="mb-3 font-mono text-sm text-accent">{profile.role}</p>
         <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl">{profile.name}</h1>
         <p className="mt-5 max-w-xl text-xl leading-snug text-ink sm:text-2xl">{profile.tagline}</p>
-        <p className="mt-5 max-w-xl text-soft">{profile.intro}</p>
+        <div className="mt-5 max-w-xl space-y-3 text-soft">
+          {profile.intro.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
         <div className="mt-8 flex flex-wrap gap-3">
           <ButtonLink to="/projetos" variant="primary">
             Ver projetos <ArrowRight size={16} aria-hidden />
+          </ButtonLink>
+          <ButtonLink to="/#trajetoria">
+            <Route size={16} aria-hidden /> Minha trajetória
           </ButtonLink>
           {profile.contact.github && (
             <ButtonLink href={profile.contact.github}>
@@ -69,11 +76,10 @@ function About() {
         </div>
         <dl className="self-end divide-y divide-line rounded-lg border border-line bg-surface">
           <div className="flex gap-3 p-5">
-            <GraduationCap size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden />
+            <Target size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden />
             <div>
-              <dt className="text-xs text-muted">Formação · {profile.education.status}</dt>
-              <dd className="text-sm font-medium">{profile.education.course}</dd>
-              <dd className="text-sm text-soft">{profile.education.institution}</dd>
+              <dt className="text-xs text-muted">Objetivo profissional</dt>
+              <dd className="text-sm font-medium">{profile.objective}</dd>
             </div>
           </div>
           <div className="flex gap-3 p-5">
@@ -93,6 +99,71 @@ function About() {
   )
 }
 
+function Journey() {
+  return (
+    <section id="trajetoria" className="border-t border-line">
+      <div className={sectionClass}>
+        <SectionHeading index="02" title="Trajetória">
+          Do mercado financeiro e do comércio para a área de dados.
+        </SectionHeading>
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+          <div>
+            <h3 className="mb-5 flex items-center gap-2 text-sm font-semibold">
+              <Briefcase size={16} className="text-accent" aria-hidden /> Experiência profissional
+            </h3>
+            <ol className="space-y-8 border-l border-line">
+              {profile.experience.map((item) => (
+                <li key={item.organization} className="relative pl-6">
+                  <span className="absolute -left-[5px] top-2 size-2.5 rounded-full border-2 border-canvas bg-accent" aria-hidden />
+                  <h4 className="font-semibold tracking-tight">{item.role}</h4>
+                  <p className="text-sm text-soft">{item.organization}</p>
+                  {item.period && <p className="mt-0.5 font-mono text-xs text-muted">{item.period}</p>}
+                  <p className="mt-3 text-sm text-soft">{item.summary}</p>
+                  {item.highlights.length > 0 && (
+                    <ul className="mt-3 space-y-1.5">
+                      {item.highlights.map((highlight) => (
+                        <li key={highlight} className="flex gap-2 text-sm text-soft">
+                          <span className="mt-2 size-1 shrink-0 rounded-full bg-muted" aria-hidden />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="space-y-5 self-start">
+            <div className="rounded-lg border border-line bg-surface p-5">
+              <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
+                <GraduationCap size={16} className="text-accent" aria-hidden /> Formação acadêmica
+              </h3>
+              <p className="text-sm font-medium">Graduação em {profile.education.course}</p>
+              <p className="text-sm text-soft">{profile.education.institution}</p>
+              <p className="mt-1 text-xs text-muted">
+                {profile.education.modality} · {profile.education.status}
+              </p>
+            </div>
+            <div className="rounded-lg border border-line bg-surface p-5">
+              <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
+                <Award size={16} className="text-accent" aria-hidden /> Certificações
+              </h3>
+              <ul className="space-y-2">
+                {profile.certifications.map((certification) => (
+                  <li key={certification.name} className="flex items-baseline justify-between gap-3 text-sm">
+                    <span className="font-medium">{certification.name}</span>
+                    <span className="text-xs text-muted">{certification.issuer}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Skills() {
   const usedLevels = (['Domino', 'Em prática', 'Estudando'] as SkillLevel[]).filter((level) =>
     skillGroups.some((group) => group.skills.some((skill) => skill.level === level)),
@@ -101,8 +172,8 @@ function Skills() {
   return (
     <section id="habilidades" className="border-t border-line">
       <div className={sectionClass}>
-        <SectionHeading index="02" title="Habilidades técnicas">
-          Estou no início da formação. Os níveis abaixo mostram onde estou hoje.
+        <SectionHeading index="03" title="Habilidades técnicas">
+          Minha formação está em andamento. Os níveis abaixo mostram onde estou hoje.
         </SectionHeading>
         <ul className="mb-6 flex flex-wrap gap-4 text-xs text-soft" aria-label="Legenda de níveis">
           {usedLevels.map((level) => (
@@ -143,8 +214,8 @@ function ProjectsPreview() {
     <section id="projetos" className="border-t border-line">
       <div className={sectionClass}>
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading index="03" title="Projetos">
-            Projetos independentes, apresentados no estágio em que realmente estão.
+          <SectionHeading index="04" title="Projetos">
+            Trabalhos práticos, apresentados no estágio em que realmente estão.
           </SectionHeading>
           <div className="mb-10">
             <ButtonLink to="/projetos">
@@ -161,7 +232,9 @@ function ProjectsPreview() {
               >
                 <span className="hidden font-mono text-xs text-muted sm:block">{project.number}</span>
                 <span>
-                  <span className="block font-semibold tracking-tight">{project.name}</span>
+                  <span className="block font-semibold tracking-tight">
+                    {project.name} <span className="font-normal text-muted">— {project.subtitle}</span>
+                  </span>
                   <span className="block text-sm text-soft">{project.summary}</span>
                 </span>
                 <StatusBadge status={project.status} />
@@ -186,8 +259,8 @@ function Contact() {
   return (
     <section id="contato" className="border-t border-line">
       <div className={sectionClass}>
-        <SectionHeading index="04" title="Contato">
-          Aberto a conversar sobre oportunidades, estudos e projetos na área de dados.
+        <SectionHeading index="05" title="Contato">
+          Aberto a conversar sobre oportunidades em dados, BI e desenvolvimento.
         </SectionHeading>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {channels.map(({ label, value, href, icon: Icon }) => (
@@ -223,6 +296,7 @@ export function HomePage() {
     <>
       <Hero />
       <About />
+      <Journey />
       <Skills />
       <ProjectsPreview />
       <Contact />

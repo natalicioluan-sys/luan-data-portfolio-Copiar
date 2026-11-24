@@ -34,9 +34,9 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Visualização',
     skills: [
-      { name: 'Power BI', level: 'Estudando', featured: true },
-      { name: 'Streamlit', level: 'Estudando' },
-      { name: 'Plotly', level: 'Estudando' },
+      { name: 'Power BI', level: 'Estudando' },
+      { name: 'Streamlit', level: 'Estudando', featured: true },
+      { name: 'Plotly', level: 'Estudando', featured: true },
     ],
   },
   {

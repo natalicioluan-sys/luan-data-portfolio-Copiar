@@ -1,8 +1,21 @@
-# Portfólio de Dados — Luan
+# Portfólio — Luan Natalício
 
-Portfólio profissional para apresentar projetos de Ciência de Dados, Análise de Dados e soluções orientadas a dados.
+Portfólio profissional de Ciência de Dados, Business Intelligence e Desenvolvimento.
 
-O site diferencia o que está concluído, em desenvolvimento e planejado. Gráficos com valores fictícios exibem o aviso **Dados demonstrativos**.
+Luan Natalício é graduando em Ciência de Dados pela UFMS (EAD, em andamento), com experiência no mercado financeiro, atendimento e análise comercial.
+
+O site separa projetos concluídos, em desenvolvimento e planejados, e usa apenas capturas reais das aplicações.
+
+## Projetos publicados
+
+| Projeto | Categoria | Status |
+|---|---|---|
+| CambioCDE — Inteligência Cambial | Inteligência financeira | Em desenvolvimento |
+| Quant Intelligence — Plataforma de Inteligência de Mercado | Inteligência financeira | Em desenvolvimento |
+| Daily Tasks — Aplicação de Gestão de Tarefas | Desenvolvimento web | Concluído (acadêmico) |
+| Sales Intelligence — Análise Comercial | Inteligência comercial | Planejado |
+
+Trading Analytics e Customer Analytics estão guardados com `published: false`. Retail Intelligence será adicionado quando houver implementação.
 
 ## Tecnologias
 
@@ -33,15 +46,16 @@ npm run preview    # testa o build localmente
 ## Estrutura do projeto
 
 ```text
-public/              favicon e robots.txt
+public/
+├─ images/projects/  capturas reais, uma pasta por projeto
 scripts/             pré-renderização das páginas
 src/
-├─ assets/           imagens e marca
+├─ assets/           marca
 ├─ components/
 │  ├─ charts/        gráficos
 │  ├─ home/          elementos da página inicial
 │  ├─ layout/        cabeçalho, rodapé e layout
-│  ├─ projects/      cards e ilustrações
+│  ├─ projects/      cards, ilustrações e blocos de estudo de caso
 │  └─ ui/            componentes reutilizáveis
 ├─ data/             perfil, habilidades e SEO
 ├─ pages/            páginas do site
@@ -51,18 +65,22 @@ src/
 
 ## Configurar seus dados
 
-Edite `src/data/profile.ts` para informar GitHub, LinkedIn, e-mail e a URL final do site. Campos com `null` não aparecem na versão publicada.
+Edite `src/data/profile.ts` para atualizar perfil, experiência, certificações, GitHub, LinkedIn, e-mail e a URL final do site. Campos com `null` não aparecem na versão publicada.
 
 Edite `src/data/skills.ts` para atualizar o nível de cada tecnologia: `Domino`, `Em prática` ou `Estudando`.
 
 ## Como adicionar um novo projeto
 
-1. Copie um arquivo de `src/projects/`, por exemplo `customer-analytics.ts`, e renomeie.
-2. Altere `slug`, `number`, `name`, `category`, `status`, textos, tecnologias e links.
-3. Importe o projeto em `src/projects/index.ts` e adicione-o à lista `projects`.
-4. Para uma categoria nova, inclua-a em `ProjectCategory` em `src/projects/types.ts`.
+1. Copie um arquivo de `src/projects/`. Use `sales-intelligence.ts` para um projeto planejado ou `daily-tasks.ts` para um projeto com capturas.
+2. Altere `slug`, nome, categoria, status, textos, tecnologias e links.
+3. Separe `technologies.used`, confirmadas no código, de `technologies.planned`.
+4. Salve as capturas em `public/images/projects/<slug>/` e registre-as em `images`.
+5. Importe o projeto em `src/projects/index.ts` e adicione-o à lista `allProjects`, na ordem desejada.
+6. Para uma categoria nova, inclua-a em `ProjectCategory` em `src/projects/types.ts`.
 
-A página e o filtro são gerados automaticamente. Seções com `null` aparecem como pendentes.
+A página, o card, o filtro e o SEO são gerados automaticamente. Para ocultar um projeto sem apagá-lo, use `published: false`.
+
+Cada seção do estudo de caso é formada por blocos: `text`, `list`, `architecture`, `notice`, `technologies`, `gallery`, `charts`, `repository` e `pending`.
 
 Em gráficos, use `source: 'real'` somente com dados reais. Com `source: 'demo'`, o aviso de dados fictícios é exibido.
 
@@ -71,12 +89,9 @@ Em gráficos, use `source: 'real'` somente com dados reais. Com `source: 'demo'`
 ### GitHub
 
 ```bash
-git init
 git add .
-git commit -m "Primeira versão do portfólio"
-git branch -M main
-git remote add origin <URL-DO-SEU-REPOSITORIO>
-git push -u origin main
+git commit -m "Descreva a alteração"
+git push
 ```
 
 ### Vercel

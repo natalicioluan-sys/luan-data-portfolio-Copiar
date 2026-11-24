@@ -7,6 +7,7 @@ import { ThemeToggle } from '../ui/ThemeToggle'
 
 const navigation = [
   { label: 'Sobre', to: '/#sobre' },
+  { label: 'Trajetória', to: '/#trajetoria' },
   { label: 'Habilidades', to: '/#habilidades' },
   { label: 'Projetos', to: '/projetos' },
   { label: 'Contato', to: '/#contato' },
@@ -24,7 +25,7 @@ export function Header() {
         <Link to="/" className="flex items-center gap-2 font-semibold tracking-tight">
           <img src={mark} alt="" width={20} height={20} />
           {profile.name}
-          <span className="font-mono text-xs font-normal text-muted">/ data</span>
+          <span className="hidden font-mono text-xs font-normal text-muted sm:inline">/ data</span>
         </Link>
 
         <div className="flex items-center gap-1">

@@ -1,49 +1,36 @@
-import type { Project } from './types'
+import { plannedSections } from './planned-case'
+import type { ProjectData } from './types'
 
-export const customerAnalytics: Project = {
+/** Oculto do site por decisão de escopo. Mude `published` para exibir. */
+export const customerAnalytics: ProjectData = {
   slug: 'customer-analytics',
-  number: '04',
   name: 'Customer Analytics',
+  subtitle: 'Segmentação de Clientes',
   category: 'Clientes',
+  context: 'Projeto independente',
   status: 'Planejado',
+  published: false,
+  statusNote: 'Projeto planejado. Ainda não possui código, dados ou resultados.',
   illustration: 'customers',
   summary: 'Projeto de análise e segmentação de clientes.',
   problem: 'Identificar perfis e padrões de consumo para diferenciar grupos de clientes.',
-  technologies: ['Python', 'Pandas', 'SQL', 'Estatística', 'Visualização de dados'],
-  objectives: [
-    'Identificar perfis de clientes.',
-    'Analisar frequência de compras.',
-    'Calcular valor médio de compras.',
-    'Segmentar clientes.',
-    'Identificar padrões de consumo.',
-  ],
-  links: { github: null, demo: null },
-  caseStudy: {
-    overview: [
-      'O Customer Analytics estuda o comportamento de compra para separar clientes em segmentos com características parecidas.',
-    ],
-    businessProblem: [
-      'Tratar todos os clientes da mesma forma dificulta entender quem compra, com que frequência e em qual valor. A segmentação busca tornar essas diferenças visíveis.',
-    ],
-    dataSources: null,
-    dataProcessing: null,
-    exploratoryAnalysis: null,
-    visualizations: [
-      {
-        kind: 'bar',
-        title: 'Exemplo de formato: clientes por segmento',
-        measure: 'Clientes',
-        source: 'demo',
-        points: [
-          { label: 'Ocasionais', value: 340 },
-          { label: 'Recorrentes', value: 210 },
-          { label: 'Novos', value: 160 },
-          { label: 'Inativos', value: 110 },
-          { label: 'Alto valor', value: 60 },
-        ],
-      },
-    ],
-    findings: null,
-    conclusions: null,
+  technologies: {
+    used: [],
+    planned: ['Python', 'Pandas', 'SQL', 'Estatística', 'Visualização de dados'],
   },
+  images: [],
+  links: { github: null, demo: null },
+  sections: plannedSections({
+    overview:
+      'O Customer Analytics pretende estudar o comportamento de compra para separar clientes em segmentos com características parecidas.',
+    problem:
+      'Tratar todos os clientes da mesma forma dificulta entender quem compra, com que frequência e em qual valor.',
+    objectives: [
+      'Identificar perfis de clientes.',
+      'Analisar frequência de compras.',
+      'Calcular valor médio de compras.',
+      'Segmentar clientes.',
+      'Identificar padrões de consumo.',
+    ],
+  }),
 }

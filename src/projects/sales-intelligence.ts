@@ -1,50 +1,38 @@
-import type { Project } from './types'
+import { plannedSections } from './planned-case'
+import type { ProjectData } from './types'
 
-export const salesIntelligence: Project = {
+const objectives = [
+  'Analisar faturamento.',
+  'Identificar produtos mais vendidos.',
+  'Calcular ticket médio.',
+  'Analisar comportamento dos clientes.',
+  'Identificar tendências de vendas.',
+  'Criar dashboards interativos.',
+]
+
+export const salesIntelligence: ProjectData = {
   slug: 'sales-intelligence',
-  number: '01',
   name: 'Sales Intelligence',
+  subtitle: 'Análise Comercial',
   category: 'Inteligência comercial',
-  status: 'Em desenvolvimento',
+  context: 'Projeto independente',
+  status: 'Planejado',
+  published: true,
+  statusNote: 'Projeto planejado. Ainda não possui código, dados ou resultados.',
   illustration: 'sales',
   summary: 'Projeto de inteligência comercial para análise de vendas de uma loja de eletrônicos.',
   problem: 'Entender o que sustenta o faturamento, quais produtos vendem mais e como os clientes compram.',
-  technologies: ['Python', 'Pandas', 'SQL', 'SQLite', 'Streamlit', 'Plotly'],
-  objectives: [
-    'Analisar faturamento.',
-    'Identificar produtos mais vendidos.',
-    'Calcular ticket médio.',
-    'Analisar comportamento dos clientes.',
-    'Identificar tendências de vendas.',
-    'Criar dashboards interativos.',
-  ],
-  links: { github: null, demo: null },
-  caseStudy: {
-    overview: [
-      'O Sales Intelligence organiza dados de vendas de uma loja de eletrônicos para responder perguntas comerciais em dashboards interativos.',
-    ],
-    businessProblem: [
-      'Registros de vendas isolados não mostram com clareza o desempenho do negócio. O projeto busca transformar esses registros em indicadores de faturamento, produtos, ticket médio e comportamento de compra.',
-    ],
-    dataSources: null,
-    dataProcessing: null,
-    exploratoryAnalysis: null,
-    visualizations: [
-      {
-        kind: 'bar',
-        title: 'Exemplo de formato: unidades vendidas por categoria',
-        measure: 'Unidades',
-        source: 'demo',
-        points: [
-          { label: 'Smartphones', value: 420 },
-          { label: 'Acessórios', value: 360 },
-          { label: 'Fones', value: 280 },
-          { label: 'Notebooks', value: 190 },
-          { label: 'Monitores', value: 120 },
-        ],
-      },
-    ],
-    findings: null,
-    conclusions: null,
+  technologies: {
+    used: [],
+    planned: ['Python', 'Pandas', 'SQL', 'SQLite', 'Streamlit', 'Plotly'],
   },
+  images: [],
+  links: { github: null, demo: null },
+  sections: plannedSections({
+    overview:
+      'O Sales Intelligence pretende organizar dados de vendas de uma loja de eletrônicos para responder perguntas comerciais em dashboards interativos.',
+    problem:
+      'Registros de vendas isolados não mostram com clareza o desempenho do negócio. O projeto busca transformá-los em indicadores de faturamento, produtos, ticket médio e comportamento de compra.',
+    objectives,
+  }),
 }
